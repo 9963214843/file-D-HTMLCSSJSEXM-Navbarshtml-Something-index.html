@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #ffcc00;
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.5s;
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.5s;
+        }
+        .box.open {
+            transform: scale(1.1);
+        }
+        .box.open .message {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .heart {
+            position: absolute;
+            bottom: 10px;
+            font-size: 24px;
+            color: red;
+            animation: floatUp 2s ease-out infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="openBox()">
+        🎁 Click Me!
+        <div class="message">To My Nanna💖
+            Hpy valentine.Lovingggggggggggggggggg uuuuuuuuuuuuuuuuuuu soooooooooo muchhhhhhhhhhh💖 and missing uuuuuuuuuuuuuu more than that. I know u also feeling same. Nanna ur my everything 
+            Thank u so much nanna ur always there for me last few months u sufferd alottttt bcz of me .I'm sry for everything 
+            <iframe id="surpriseVideo" src="https://www.youtube.com/embed/-t5b7MrWENk" allowfullscreen></iframe>
+        </div>
+ </div>
+    </div>
+
+    <script>
+        function openBox() {
+            let box = document.querySelector(".box");
+            box.classList.toggle("open");
+            if (box.classList.contains("open")) {
+                generateHearts();
+            }
+        }
+
+        function generateHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>
